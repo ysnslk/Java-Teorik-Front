@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Box Model</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+      .block {
+        display: block;
+        background-color: yellow;
+        /* Top Right Bottom Left */
+        margin: 30px 40px 50px 10px;
+        padding: 30px 40px 50px 10px;
+        /* 1.border-weight 3.border-color */
+        border: 5px solid darkblue;
+        border-radius: 10px;
+        /* border-radius: 10%; */
+        height: 200px;
+      }
+      .block2 {
+        background-color: cyan;
+        margin: 30px 20px 50px;
+      }
+      .circle {
+        background-color: deepskyblue;
+        border: 2px solid blue;
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+      }
+      .inline {
+        display: inline;
+      }
+      .float {
+        float: right;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="block">Display Block</div>
+    <div class="block2">Display Block 2</div>
+    <div class="circle">2</div>
+    <div class="block">
+      Display Block
+      <div class="inline">Inline Element</div>
+      <span>Inline Element 2</span>
+    </div>
+    <div class="block">
+      Display Block
+      <span class="float">Inline Element 2</span>
+    </div>
+  </body>
+</html>

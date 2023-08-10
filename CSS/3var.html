@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Variable</title>
+    <style>
+      :root {
+        --color-red: #ff2020;
+        --font-size: 20px;
+      }
+      h3,
+      span {
+        color: var(--color-red);
+      }
+      p {
+        font-size: var(--font-size);
+      }
+      p span {
+        --size-for-span: 1.5em;
+        font-size: var(--size-for-span);
+      }
+      p + span{
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <article>
+      <header>
+        <h3>Yapay Zeka</h3>
+      </header>
+      <p>
+        <span>Lorem ipsum</span>, dolor sit amet consectetur adipisicing elit.
+        Eveniet sapiente aperiam excepturi minima quidem exercitationem modi
+        ipsam tenetur. Praesentium iure, ab temporibus, adipisci id at quo sequi
+        sunt ipsa, neque tempora quasi voluptatem? Ipsa necessitatibus debitis
+        sint perferendis nostrum quod ab. Non impedit debitis, esse enim aliquid
+        inventore fugit nesciunt.
+      </p>
+      <span
+        >Praesentium iure, ab temporibus, adipisci id at quo sequi sunt ipsa,
+        neque tempora quasi.</span
+      >
+    </article>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+nav {
+  height: 100px;
+  background-color: lightgray;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+.logo {
+  order: 0;
+  align-self: center;
+}
+ul {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  order: 1;
+  list-style: none;
+}
+.profile {
+  order: 2;
+}
+.hamburger {
+  display: none;
+  width: 70px;
+  height: 70px;
+  position: fixed;
+  top: 15px;
+  right: 30px;
+}
+.hamburger > img {
+  width: 70px;
+  height: 70px;
+}
+/* Screen yerine print kullanılırsa ekran yazdırılmak istediğinde */
+/* orientation:portrait ve landspace olarak iki değer alır. 
+   Portrait: dikey ekranlar için kullanılır.
+   Landscape: yatay ekranlar için kullanılır. */
+/* and or not operatörleri mevcut. */
+/* device-width, device-height */
+/* (aspect-ratio: 16/9) */
+/* @media screen and (max-width: 600px) and (min-width: 550px) */
+/* @media screen and (max-width: 600px) and (min-width: 550px) and (aspect-ratio: 16/9)  */
+@media screen and (550px < width <= 600px) {
+  .hamburger {
+    display: block;
+  }
+  ul {
+    display: none;
+  }
+  nav {
+    padding-right: 120px;
+  }
+}
+
+@media screen and (600px < width < 700px) {
+  .hamburger {
+    display: block;
+    background-color: orange;
+  }
+  ul {
+    display: none;
+  }
+  nav {
+    padding-right: 120px;
+  }
+}

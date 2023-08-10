@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        *{
+            box-sizing: border-box;
+        }
+        .relative{
+            position: relative;
+            width: 100%;
+            height: 500px;
+            background-color: yellow;
+            margin-top: 100px;
+            /* z-index position:relative, absolute, fixed ve sticky için çalışır */
+            z-index: 11;
+        }
+        .absolute1{
+            position: absolute;
+            height: 100px;
+            width: 100px;
+            background-color: red;
+             /* top, right, bottom,left position: absolute, fixed ve sticky için çalışır */
+            top: 100px;
+            right: 0;
+            z-index: 1;
+        }
+        .absolute2{
+            position: absolute;
+            height: 200px;
+            width: 200px;
+            background-color: blue;
+            left: 100px;
+            bottom: 100px;
+            padding-right: 10px;
+            color: white;
+            padding-top: 20px;
+            padding-left: 20px;
+            margin-top: 10px;
+            z-index: 5;
+        }
+        .absolute21{
+            position: absolute;
+            height: 100px;
+            width: 100px;
+            background-color: lightblue;
+            bottom: 50px;
+            right: 10px;
+            z-index: 3;
+        }
+        .absolute22{
+            position: absolute;
+            height: 100px;
+            width: 100px;
+            background-color: lightpink;
+            bottom: 40px;
+            right: 10px;
+            z-index: 4;
+        }
+        .absolute3{
+            position: absolute;
+            height: 100px;
+            width: 100px;
+            background-color: pink;
+            top: 110px;
+            right: 10px;
+            z-index: 2;
+        }
+        .fixed1{
+            position: fixed;
+            height: 200px;
+            width: 200px;
+            background-color: darksalmon;
+            top: 200px;
+            left: 200px;
+            z-index: 10;
+        }
+        .fixed2{
+            position: fixed;
+            height: 150px;
+            width: 150px;
+            background-color: green;
+            top: 100px;
+            right: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="relative">Relative
+        <div class="absolute1">Absolute1</div>
+        <div class="absolute2">Absolute2
+            <div class="absolute21">Absolute2.1</div>
+            <div class="absolute22">Absolute2.2</div>
+        </div>
+        
+        <div class="absolute3">Absolute3
+            <div class="fixed2">Fixed2</div>
+        </div>
+    </div>
+    <div class="fixed1">Fixed1</div>
+</body>
+</html>

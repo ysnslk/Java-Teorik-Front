@@ -1,0 +1,15 @@
+@font-face {
+    font-family: "Lora";
+    src: local("Lora Bold"), url("./Lora-Bold.ttf");
+    font-weight: 700;
+}
+@font-face {
+    font-family: "Lora";
+    src: local("Lora Medium"), url("./Lora-Medium.ttf");
+    font-weight: 500;
+}
+@font-face {
+    font-family: "Lora";
+    src: local("Lora Regular"), url("./Lora-Regular.ttf");
+    font-weight: 400;
+}

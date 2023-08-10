@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <fieldset>
+    <legend>İlk Form</legend>
+    <form action="javascript:alert('Form çağırıldı.')">
+        <label for="nameId1">İsim</label>
+        <input type="text" name="name1" id="nameId1" value="Ayşe"/>
+        <br>
+        <label for="dateId1">Tarih</label>
+        <input type="date" name="date1" id="dateId1">
+        <br>
+        
+        <input type="checkbox" name="checkbox1" id="checkboxId1" value="cValue1">
+        <label for="checkboxId1">checkbox1</label>
+        <br>
+        <input type="checkbox" name="checkbox2" id="checkboxId2" value="cValue2">
+        <label for="checkboxId2">checkbox2</label>
+        <br>
+        <!-- Birbirine bağlı radio inputlarının nameleri aynı verilmelidir. -->
+        <input type="radio" name="radio1" id="radioId1" value="rValue1">
+        <label for="radioId1">Radio 1</label>
+        <input type="radio" name="radio1" id="radioId2" value="rValue2">
+        <label for="radioId2">Radio 2</label>
+        <br>
+        <label for="numberId1">Yaş</label>
+        <input type="number" name="number1" id="numberId1" min="0" max="10000">
+        <input type="file" name="file1" id="fileId1">
+        <br>
+        <input type="hidden" name="hidden1" value="hidden value">
+        <br>
+        <label for="passwordId1">Şifre</label>
+        <input type="password" name="password1" id="passwordId1">
+        <br>
+        <label for="selectId1">Öğrenciler</label>
+        <select name="select1" id="selectId1">
+            <option value="kerem">Kerem</option>
+            <option value="yasin">Yasin</option>
+            <option value="sinem">Sinem</option>
+        </select>
+        <br>
+        <label for="selectId2">Öğrenciler</label>
+        <select name="select2" id="selectId2" multiple size="2">
+            <option value="kerem">Kerem</option>
+            <option value="yasin">Yasin</option>
+            <option value="sinem">Sinem</option>
+        </select>
+        <br>
+        <label for="textareaId1">Textarea</label>
+        <textarea name="textarea1" id="textareaId1" rows="5" cols="40"></textarea>
+        <br><br>
+        <input type="button" onclick="alert('Hello World')" value="Button">
+        <input type="submit" value="Submit Button">
+    </form>
+</fieldset>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,15 @@
+.external1 {
+    font-size: 2em;
+    color: blueviolet;
+  }
+  
+  .div2 {
+    width: 50%;
+    height: 5in;
+    background-color: cornflowerblue;
+    color: white;
+  }
+  
+  body {
+    margin: 0;
+  }
