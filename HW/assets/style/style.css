@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background-color: gray;
+
+  margin: 0 auto;
+  width: 1200px;
+}
+.main-img > img {
+  height: 478px;
+  width: 478px;
+}
+.product-detail-container{
+    display: flex;
+}
+.carousel {
+    display: flex;
+  overflow-x: auto;
+  gap: 5px;
+}
+.carousel img {
+  height: 114px;
+  width: 114px;
+
+}
+.slider {
+  width: 500px;
+  height: 600px;
+  background-color: red;
+  text-align: center;
+}
+
+.product-details{
+    background-color: blueviolet;
+    width: 700px;
+    height: 622px;
+    display: flex;
+    
+}
