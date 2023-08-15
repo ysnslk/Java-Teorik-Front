@@ -1,0 +1,33 @@
+$blue: #4096ff;
+$gray: #d9d9d9;
+
+@mixin popoverHover($color: "#ffffff") {
+  color: $color;
+  border-color: $color;
+}
+.popover {
+  & &-button {
+    border: 1px solid $gray;
+    background-color: white;
+    height: 32px;
+    border-radius: 6px;
+    padding: 4px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+    &:hover {
+      @include popoverHover($blue);
+    }
+  }
+
+  & &-box {
+    max-width: 250px;
+    border: 1px solid $gray;
+    border-radius: 6px;
+    padding: 4px 15px;
+    margin-top: 5px;
+    box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08),
+      0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  }
+}

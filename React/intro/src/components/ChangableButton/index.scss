@@ -1,0 +1,9 @@
+.changableButton {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+  input {
+    min-height: 32px;
+  }
+}

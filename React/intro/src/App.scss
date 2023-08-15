@@ -1,5 +1,7 @@
+*{
+  box-sizing: border-box;
+}
 .App {
-  text-align: center;
 }
 
 .App-logo {
@@ -22,6 +24,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  text-align: center;
 }
 
 .App-link {
@@ -35,4 +38,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+section {
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
