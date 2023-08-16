@@ -1,0 +1,40 @@
+{
+  "user": [
+    {
+      "firstName": "Yasin",
+      "surName": "Solak",
+      "age": "27",
+      "id": 1
+    },
+    {
+      "firstName": "Ali",
+      "surName": "Kaya",
+      "age": "15",
+      "id": 2
+    },
+    {
+      "firstName": "Yasin",
+      "surName": "Solak",
+      "age": "26",
+      "id": 3
+    },
+    {
+      "firstName": "Yasin",
+      "surName": "Solak",
+      "age": "27",
+      "id": 4
+    },
+    {
+      "firstName": "Yasin",
+      "surName": "Solak",
+      "age": "27",
+      "id": 5
+    },
+    {
+      "firstName": "Yasin",
+      "surName": "Solak",
+      "age": "27",
+      "id": 6
+    }
+  ]
+}
