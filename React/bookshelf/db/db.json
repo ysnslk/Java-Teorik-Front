@@ -1,0 +1,34 @@
+{
+  "book": [
+    {
+      "name": "aaa",
+      "releaseDate": "2023-08-04",
+      "author": "aaa",
+      "pageCount": "123",
+      "isbn": "2321321",
+      "gender": "action",
+      "publisher": "aaaa",
+      "id": 1
+    },
+    {
+      "name": "aaa",
+      "releaseDate": "2023-08-01",
+      "author": "asdasd",
+      "pageCount": "1321",
+      "isbn": "12321312",
+      "gender": "dystopian",
+      "publisher": "sadasdas",
+      "id": 2
+    },
+    {
+      "name": "aaaadsa",
+      "releaseDate": "2023-08-01",
+      "author": "asdasd",
+      "pageCount": "13212",
+      "isbn": "123213122",
+      "gender": "dystopian",
+      "publisher": "sadasdas",
+      "id": 3
+    }
+  ]
+}
