@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Input = ({ onChange }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -11,6 +11,16 @@ const Input = ({ onChange }) => {
     const value = e.target.value;
     onChange(value);
   };
+  useEffect(() => {
+    console.log("isVisible", isVisible);
+  },[isVisible,onChange]);
+ useEffect(() => {
+    console.log("isVisible", isVisible);
+  },[isVisible]);
+
+  useEffect(() => {
+    console.log("Sayfa Yüklendi...");
+  },[]);
 
   return (
     <>
