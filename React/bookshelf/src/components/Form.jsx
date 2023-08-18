@@ -14,7 +14,9 @@ const Form = ({ onChange }) => {
       gender: e.target.gender.value,
       publisher: e.target.publisher.value,
     };
-    axios.post("http://localhost:5000/book", data).then((res) => {
+    axios.post("http://localhost:5000/book", {
+      data
+    }).then((res) => {
       console.log(res);
       onChange(res.data.id);
     });
@@ -26,16 +28,15 @@ const Form = ({ onChange }) => {
       <input type="text" name="author" placeholder="Author" />
       <input type="number" name="pageCount" placeholder="Page Count" />
       <input type="text" name="isbn" placeholder="ISBN" />
-      <input type="radio" name="gender" value="action" />
       <label>
-        <input type="radio" name="gender" value="dystopian" />
+        <input type="radio" name="gender" value="action" />
         Action
       </label>
       <label>
-        <input type="text" name="publisher" placeholder="Publisher" />
+        <input type="radio" name="gender" value="dystopian" />
         Dystopian
       </label>
-
+      <input type="text" name="publisher" placeholder="Publisher" />
       <button type="submit">Submit</button>
     </form>
   );

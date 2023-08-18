@@ -6,10 +6,37 @@ import { useState } from "react";
 const Table = ({ newBookId }) => {
   const [books, setBooks] = useState([]);
   useEffect(() => {
+    let unmuonted = false;
+    const source = axios.CancelToken.source();
     axios
-      .get("http://localhost:5000/book")
-      .then((response) => setBooks(response.data));
+      .get("http://localhost:5000/book", {
+        cancelToken: source.token,
+      })
+      .then((response) => {
+        if (!unmuonted) {
+          setBooks(response.data);
+        }
+      })
+      .catch((err) => {
+        if (!unmuonted) {
+          console.log(err.message);
+        }
+      });
+    return () => {
+      unmuonted = true;
+      source.cancel();
+    };
   }, [newBookId]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      console.log("Çalıştı");
+    }, 3000);
+    return () => {
+      console.log("Componentten çıktı");
+      clearInterval(interval);
+    };
+  });
   return (
     <table>
       <thead>

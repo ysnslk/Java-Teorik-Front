@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "firstName": "Yasn",
+      "surName": "Solak",
+      "gender": "male",
+      "age": "27",
+      "isAdmin": "X",
+      "id": 1
+    },
+    {
+      "firstName": "Zeynel",
+      "surName": "Şahin",
+      "gender": "male",
+      "age": "28",
+      "isAdmin": "X",
+      "id": 2
+    },
+    {
+      "firstName": "Zeynep",
+      "surName": "Tunç",
+      "gender": "female",
+      "age": "56",
+      "isAdmin": "O",
+      "id": 3
+    },
+    {
+      "firstName": "Ayşen",
+      "surName": "Tunç",
+      "gender": "female",
+      "age": "25",
+      "isAdmin": "X",
+      "id": 4
+    }
+  ]
+}
