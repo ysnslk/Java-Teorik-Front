@@ -1,7 +1,7 @@
 import { Button, Form, Input, Modal, Select } from "antd";
 import React from "react";
 
-const AddUserModal = ({ isModalOpen, onOk, onCancel }) => {
+const AddFlowModal = ({ isModalOpen, onOk, onCancel }) => {
   const [form] = Form.useForm();
   const onFinish = (values) => {
     onOk(values);
@@ -9,7 +9,7 @@ const AddUserModal = ({ isModalOpen, onOk, onCancel }) => {
   };
   return (
     <Modal
-      title="Add User"
+      title="Add Flow"
       open={isModalOpen}
       onCancel={onCancel}
       cancelButtonProps={{ style: { display: "none" } }}
@@ -17,39 +17,37 @@ const AddUserModal = ({ isModalOpen, onOk, onCancel }) => {
     >
       <Form
         form={form}
-        name="add-user"
+        name="add-flow"
         onFinish={onFinish}
         wrapperCol={{ span: 16 }}
         labelCol={{ span: 8 }}
       >
         <Form.Item
-          name="firstName"
-          label="First Name"
+          name="name"
+          label="Flow Name"
           rules={[{ required: true }]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-          name="lastName"
-          label="Last Name"
+          name="tasks"
+          label="Task"
           rules={[{ required: true }]}
         >
-          <Input />
-        </Form.Item>
-        <Form.Item name="gender" label="Gender" rules={[{ required: true }]}>
-          <Select placeholder="Select an option">
-            <Select.Option value="female">Female</Select.Option>
-            <Select.Option value="male">Male</Select.Option>
-            <Select.Option value="other">Other</Select.Option>
+          <Select placeholder="Select an option" mode="multiple">
+            <Select.Option value="a">Task - 1</Select.Option>
+            <Select.Option value="b">Task - 2</Select.Option>
+            <Select.Option value="c">Task - 3</Select.Option>
           </Select>
         </Form.Item>
-
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type="primary" htmlType="submit">Add User</Button>
+          <Button type="primary" htmlType="submit">
+            Add Flow
+          </Button>
         </Form.Item>
       </Form>
     </Modal>
   );
 };
 
-export default AddUserModal;
+export default AddFlowModal;

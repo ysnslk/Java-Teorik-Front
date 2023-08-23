@@ -2,10 +2,10 @@ import "./App.css";
 import { ConfigProvider, theme } from "antd";
 import trTR from "antd/locale/tr_TR";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import User from "./pages/Task/User";
+import User from "./pages/User/User";
 import Role from "./pages/Role/Role";
 import Flow from "./pages/Flow/Flow";
-import Task from "./pages/User/Task";
+import Task from "./pages/Task/Task";
 import Permission from "./pages/Permission/Permission";
 import MainLayout from "./components/MainLayout";
 

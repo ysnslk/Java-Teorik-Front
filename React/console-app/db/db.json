@@ -1,3 +1,41 @@
 {
-  "user": []
+  "user": [
+    {
+      "id": "1",
+      "firstName": "Mike",
+      "lastName": "AAAA",
+      "gender": "Male"
+    },
+    {
+      "id": "2",
+      "firstName": "John",
+      "lastName": "AAAA",
+      "gender": "Male"
+    },
+    {
+      "firstName": "dsadsa",
+      "lastName": "dsadas",
+      "gender": "female",
+      "id": "UrRrK6P"
+    },
+    {
+      "firstName": "ada",
+      "lastName": "ada",
+      "gender": "male",
+      "id": "Cw4c04f"
+    },
+    {
+      "firstName": "sadsa",
+      "lastName": "dasd",
+      "gender": "female",
+      "id": "TqJufCu"
+    },
+    {
+      "firstName": "aa",
+      "lastName": "aa",
+      "gender": "male",
+      "id": "O3aqHIy"
+    }
+  ],
+  "permission": []
 }

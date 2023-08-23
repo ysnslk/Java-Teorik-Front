@@ -1,20 +1,15 @@
 import React, { useState } from "react";
 import PageLayout from "../../components/PageLayout";
 import { Table } from "antd";
-import AddUserModal from "../../components/AddUserModal";
-
+import AddTaskModal from "../../components/AddTaskModal";
 const dataSource = [
   {
     key: "1",
-    name: "Mike",
-    age: 32,
-    address: "10 Downing Street",
+    name: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, at.",
   },
   {
     key: "2",
-    name: "John",
-    age: 42,
-    address: "10 Downing Street",
+    name: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, at.",
   },
 ];
 
@@ -24,23 +19,12 @@ const columns = [
     dataIndex: "name",
     key: "name",
   },
-  {
-    title: "Age",
-    dataIndex: "age",
-    key: "age",
-  },
-  {
-    title: "Address",
-    dataIndex: "address",
-    key: "address",
-  },
 ];
-
-const User = () => {
+const Permission = () => {
   const buttons = [
     {
-      key: "addUser",
-      text: "Add User",
+      key: "addTask",
+      text: "Add Task",
       type: "primary",
       onClick: () => setIsModalOpen(true),
     },
@@ -53,11 +37,10 @@ const User = () => {
   const onCancelAddModal = () => {
     setIsModalOpen(false);
   };
-
   return (
     <PageLayout buttons={buttons}>
       <Table dataSource={dataSource} columns={columns} />
-      <AddUserModal
+      <AddTaskModal
         isModalOpen={isModalOpen}
         onOk={onOkAddModal}
         onCancel={onCancelAddModal}
@@ -66,4 +49,4 @@ const User = () => {
   );
 };
 
-export default User;
+export default Permission;
