@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+import CreateToDo from "../components/CreateToDo";
+import ToDoList from "../components/ToDoList";
 
 const ToDo = () => {
   return (
-    <div>ToDo</div>
-  )
-}
+    <div>
+      <CreateToDo />
+      <ToDoList />
+    </div>
+  );
+};
 
-export default ToDo
+export default ToDo;
