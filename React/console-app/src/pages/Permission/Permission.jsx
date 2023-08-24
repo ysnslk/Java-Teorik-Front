@@ -1,17 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PageLayout from "../../components/PageLayout";
 import { Table } from "antd";
 import AddPermissionModal from "../../components/AddPermissonModal";
-const dataSource = [
-  {
-    key: "1",
-    name: "Full Acces",
-  },
-  {
-    key: "2",
-    name: "Only Read",
-  },
-];
+import axios from "axios";
 
 const columns = [
   {
@@ -21,6 +12,18 @@ const columns = [
   },
 ];
 const Permission = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [permissions, setPermissions] = useState([]);
+  const onOkAddModal = (values) => {
+    setIsModalOpen(false);
+    console.log(values);
+    axios
+      .post("http://localhost:5000/permission", values)
+      .then((res) => setPermissions((prevstate) => [...prevstate, res.data]));
+  };
+  const onCancelAddModal = () => {
+    setIsModalOpen(false);
+  };
   const buttons = [
     {
       key: "addPermission",
@@ -29,17 +32,15 @@ const Permission = () => {
       onClick: () => setIsModalOpen(true),
     },
   ];
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const onOkAddModal = (values) => {
-    setIsModalOpen(false);
-    console.log(values);
-  };
-  const onCancelAddModal = () => {
-    setIsModalOpen(false);
-  };
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/permission")
+      .then((res) => setPermissions(res.data));
+  }, []);
+
   return (
     <PageLayout buttons={buttons}>
-      <Table dataSource={dataSource} columns={columns} />
+      <Table dataSource={permissions} columns={columns} rowKey="id" />
       <AddPermissionModal
         isModalOpen={isModalOpen}
         onOk={onOkAddModal}

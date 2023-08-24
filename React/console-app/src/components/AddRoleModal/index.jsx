@@ -1,7 +1,7 @@
 import { Button, Form, Input, Modal, Select } from "antd";
 import React from "react";
 
-const AddRoleModal = ({ isModalOpen, onOk, onCancel }) => {
+const AddRoleModal = ({ isModalOpen, onOk, onCancel, permissions }) => {
   const [form] = Form.useForm();
   const onFinish = (values) => {
     onOk(values);
@@ -22,23 +22,29 @@ const AddRoleModal = ({ isModalOpen, onOk, onCancel }) => {
         wrapperCol={{ span: 16 }}
         labelCol={{ span: 8 }}
       >
-        <Form.Item
-          name="name"
-          label="Role Name"
-          rules={[{ required: true }]}
-        >
+        <Form.Item name="name" label="Role Name" rules={[{ required: true }]}>
           <Input />
         </Form.Item>
-        <Form.Item name="permissions" label="Permissions" rules={[{ required: true }]}>
-          <Select placeholder="Select an option" mode="multiple" >
-            <Select.Option value="a">A</Select.Option>
-            <Select.Option value="b">B</Select.Option>
-            <Select.Option value="c">C</Select.Option>
+        <Form.Item
+          name="permissions"
+          label="Permissions"
+          rules={[{ required: true }]}
+        >
+          <Select placeholder="Select an option" mode="multiple">
+            {permissions.map((permission) => {
+              return (
+                <Select.Option key={permission.id} value={permission.id}>
+                  {permission.name}
+                </Select.Option>
+              );
+            })}
           </Select>
         </Form.Item>
 
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type="primary" htmlType="submit">Add Role</Button>
+          <Button type="primary" htmlType="submit">
+            Add Role
+          </Button>
         </Form.Item>
       </Form>
     </Modal>

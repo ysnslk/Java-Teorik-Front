@@ -4,9 +4,12 @@ import { Table } from "antd";
 import AddUserModal from "../../components/AddUserModal";
 import axios from "axios";
 
-
-
 const columns = [
+  {
+    title: "ID",
+    dataIndex: "id",
+    key: "id",
+  },
   {
     title: "First Name",
     dataIndex: "firstName",
@@ -22,13 +25,21 @@ const columns = [
     dataIndex: "gender",
     key: "gender",
   },
+  {
+    title: "Role",
+    dataIndex: "role",
+    key: "role",
+  },
 ];
 
 const User = () => {
-  const [users, setUsers] = useState(null);
+  const [users, setUsers] = useState([]);
+  const [roles, setRoles] = useState([]);
   const [count, setCount] = useState(0);
 
   useEffect(() => {
+    
+    axios.get("http://localhost:5000/role").then((res) => setRoles(res.data));
     axios.get("http://localhost:5000/user").then((res) => setUsers(res.data));
   }, [count]);
 
@@ -60,6 +71,7 @@ const User = () => {
         isModalOpen={isModalOpen}
         onOk={onOkAddModal}
         onCancel={onCancelAddModal}
+        roles={roles}
       />
     </PageLayout>
   );

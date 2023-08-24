@@ -1,7 +1,7 @@
 import { Button, Form, Input, Modal, Select } from "antd";
 import React from "react";
 
-const AddUserModal = ({ isModalOpen, onOk, onCancel }) => {
+const AddUserModal = ({ isModalOpen, onOk, onCancel, roles }) => {
   const [form] = Form.useForm();
   const onFinish = (values) => {
     onOk(values);
@@ -43,9 +43,21 @@ const AddUserModal = ({ isModalOpen, onOk, onCancel }) => {
             <Select.Option value="other">Other</Select.Option>
           </Select>
         </Form.Item>
-
+        <Form.Item name="role" label="Role" rules={[{ required: true }]}>
+          <Select placeholder="Select an option">
+            {roles.map((role) => {
+              return (
+                <Select.Option key={role.id} value={role.name}>
+                  {role.name}
+                </Select.Option>
+              );
+            })}
+          </Select>
+        </Form.Item>
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type="primary" htmlType="submit">Add User</Button>
+          <Button type="primary" htmlType="submit">
+            Add User
+          </Button>
         </Form.Item>
       </Form>
     </Modal>

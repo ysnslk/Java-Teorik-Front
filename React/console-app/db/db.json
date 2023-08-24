@@ -1,41 +1,68 @@
 {
   "user": [
     {
-      "id": "1",
-      "firstName": "Mike",
-      "lastName": "AAAA",
-      "gender": "Male"
-    },
-    {
-      "id": "2",
-      "firstName": "John",
-      "lastName": "AAAA",
-      "gender": "Male"
-    },
-    {
-      "firstName": "dsadsa",
-      "lastName": "dsadas",
-      "gender": "female",
-      "id": "UrRrK6P"
-    },
-    {
-      "firstName": "ada",
-      "lastName": "ada",
-      "gender": "male",
-      "id": "Cw4c04f"
-    },
-    {
-      "firstName": "sadsa",
-      "lastName": "dasd",
-      "gender": "female",
-      "id": "TqJufCu"
-    },
-    {
       "firstName": "aa",
       "lastName": "aa",
-      "gender": "male",
-      "id": "O3aqHIy"
+      "gender": "female",
+      "id": 1
+    },
+    {
+      "firstName": "sada",
+      "lastName": "aa",
+      "gender": "female",
+      "id": 2
     }
   ],
-  "permission": []
+  "permission": [
+    {
+      "name": "Full Access",
+      "id": 1
+    },
+    {
+      "name": "Only Read",
+      "id": 2
+    },
+    {
+      "name": "Access",
+      "id": 3
+    },
+    {
+      "name": "a",
+      "id": 4
+    },
+    {
+      "name": "a",
+      "permissions": "1,2,3",
+      "id": 5
+    },
+    {
+      "name": "ADMIN",
+      "permissions": "1,2",
+      "id": 6
+    }
+  ],
+  "task": [],
+  "flow": [],
+  "role": [
+    {
+      "name": "SA",
+      "permissions": "1,2",
+      "id": 1
+    },
+    {
+      "name": "Admin",
+      "permissions": "1,2,3",
+      "id": 2
+    },
+    {
+      "name": "sadsaddd",
+      "permissions": "1",
+      "id": 3
+    },
+    {
+      "name": "aaa",
+      "permissions": "1,2,6",
+      "id": 4
+    }
+  ]
 }

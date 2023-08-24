@@ -10,9 +10,9 @@ const PageLayout = ({ children, buttons }) => {
           <Col flex="auto">Search</Col>
           <Col>
             {buttons.map((button) => {
-              const { key, text, type, ...otherProps } = button;
+              const { key, text, ...otherProps } = button;
               return (
-                <Button key={key} {...otherProps}>
+                <Button key={key}  {...otherProps} >
                   {text}
                 </Button>
               );
