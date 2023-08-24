@@ -10,6 +10,9 @@ import Permission from "./pages/Permission/Permission";
 import MainLayout from "./components/MainLayout";
 
 function App() {
+  // task => permission
+  // flow => role
+
   return (
     <ConfigProvider locale={trTR} theme={{ algorithm: theme.defaultAlgorithm }}>
       <BrowserRouter>

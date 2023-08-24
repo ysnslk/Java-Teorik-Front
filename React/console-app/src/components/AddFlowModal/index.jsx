@@ -1,7 +1,7 @@
 import { Button, Form, Input, Modal, Select } from "antd";
 import React from "react";
 
-const AddFlowModal = ({ isModalOpen, onOk, onCancel }) => {
+const AddFlowModal = ({ isModalOpen, onOk, onCancel, tasks }) => {
   const [form] = Form.useForm();
   const onFinish = (values) => {
     onOk(values);
@@ -22,22 +22,16 @@ const AddFlowModal = ({ isModalOpen, onOk, onCancel }) => {
         wrapperCol={{ span: 16 }}
         labelCol={{ span: 8 }}
       >
-        <Form.Item
-          name="name"
-          label="Flow Name"
-          rules={[{ required: true }]}
-        >
+        <Form.Item name="fName" label="Flow Name" rules={[{ required: true }]}>
           <Input />
         </Form.Item>
-        <Form.Item
-          name="tasks"
-          label="Task"
-          rules={[{ required: true }]}
-        >
+        <Form.Item name="tasks" label="Task" rules={[{ required: true }]}>
           <Select placeholder="Select an option" mode="multiple">
-            <Select.Option value="a">Task - 1</Select.Option>
-            <Select.Option value="b">Task - 2</Select.Option>
-            <Select.Option value="c">Task - 3</Select.Option>
+            {tasks.map((task) => {
+              return (
+                <Select.Option key={task.id} value={task.name}>{task.name}</Select.Option>
+              );
+            })}
           </Select>
         </Form.Item>
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>

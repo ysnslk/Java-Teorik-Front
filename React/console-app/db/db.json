@@ -11,6 +11,20 @@
       "lastName": "aa",
       "gender": "female",
       "id": 2
+    },
+    {
+      "firstName": "Ahmet",
+      "lastName": "Mehmet",
+      "gender": "male",
+      "role": "Admin",
+      "id": 3
+    },
+    {
+      "firstName": "Super",
+      "lastName": "Admin",
+      "gender": "other",
+      "role": "TestAdmin",
+      "id": 4
     }
   ],
   "permission": [
@@ -39,10 +53,49 @@
       "name": "ADMIN",
       "permissions": "1,2",
       "id": 6
+    },
+    {
+      "name": "TEST",
+      "id": 7
     }
   ],
-  "task": [],
-  "flow": [],
+  "task": [
+    {
+      "name": "Task - 1",
+      "id": 1
+    },
+    {
+      "name": "Task - 2",
+      "id": 2
+    }
+  ],
+  "flow": [
+    {
+      "fName": "Flow - 1",
+      "tasks": "Task - 1,Task - 2",
+      "id": 1
+    },
+    {
+      "fName": "aaa",
+      "tasks": "Task - 1,Task - 2",
+      "id": 2
+    },
+    {
+      "fName": "adsad",
+      "tasks": "Task - 2,Task - 1",
+      "id": 3
+    },
+    {
+      "fName": "sdadsa",
+      "tasks": "Task - 1",
+      "id": 4
+    },
+    {
+      "fName": "TEST",
+      "tasks": "Task - 1,Task - 2",
+      "id": 5
+    }
+  ],
   "role": [
     {
       "name": "SA",
@@ -63,6 +116,11 @@
       "name": "aaa",
       "permissions": "1,2,6",
       "id": 4
+    },
+    {
+      "name": "TestAdmin",
+      "permissions": "1,7",
+      "id": 5
     }
   ]
 }

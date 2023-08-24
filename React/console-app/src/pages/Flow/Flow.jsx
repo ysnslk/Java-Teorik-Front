@@ -1,33 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PageLayout from "../../components/PageLayout";
-import { Table } from "antd";
+import { Table, Tag } from "antd";
 import AddFlowModal from "../../components/AddFlowModal";
-const dataSource = [
-  {
-    key: "1",
-    name: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, at.",
-    tasks: " Lorem, ipsum dolor.",
-  },
-  {
-    key: "2",
-    name: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, at.",
-    tasks: " Lorem, ipsum dolor.",
-  },
-];
+import axios from "axios";
 
-const columns = [
-  {
-    title: "Name",
-    dataIndex: "name",
-    key: "name",
-  },
-  {
-    title: "Tasks",
-    dataIndex: "tasks",
-    key: "tasks",
-  },
-];
-const Permission = () => {
+const Flow = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [flows, setFlows] = useState([]);
+  const [tasks, setTasks] = useState([]);
   const buttons = [
     {
       key: "addflow",
@@ -36,24 +16,83 @@ const Permission = () => {
       onClick: () => setIsModalOpen(true),
     },
   ];
-  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const onOkAddModal = (values) => {
     setIsModalOpen(false);
-    console.log(values);
+    const flow = {
+      fName: values.fName,
+      tasks: values.tasks.join(","),
+    };
+    axios.post("http://localhost:5000/flow", flow).then((res) => {
+      const newFlow = {
+        ...res.data,
+        tasks: values.tasks.map(
+          (tId) => tasks.find((task) => task.id === parseInt(tId))
+        ),
+      };
+      setFlows((prevFlows) => [...prevFlows, newFlow]);
+    });
   };
+
   const onCancelAddModal = () => {
     setIsModalOpen(false);
   };
+
+  useEffect(() => {
+    axios.get("http://localhost:5000/task").then((res) => {
+      const fetchedTasks = res.data;
+      setTasks(fetchedTasks);
+      axios.get("http://localhost:5000/flow").then((resFlow) => {
+        const flowsData = resFlow.data.map((flow) => {
+          const taskIds = flow.tasks.split(",");
+          const flowTasks = taskIds.map((id) =>
+            fetchedTasks.find((task) => task.id === parseInt(id))
+          );
+          return {
+            ...flow,
+            tasks: flowTasks,
+          };
+        });
+
+        
+        setFlows(flowsData);
+      });
+    });
+  }, []);
+
+  const columns = [
+    {
+      title: "Flow Name",
+      dataIndex: "fName",
+      key: "fName",
+    },
+    {
+      title: "Tasks",
+      dataIndex: "tasks",
+      key: "tasks",
+      // render: (taskList) => (
+      //   <>
+      //     {taskList.map((task) => (
+      //       <Tag color="blue" key={task.id}>
+      //         {task.fName}
+      //       </Tag>
+      //     ))}
+      //   </>
+      // ),
+    },
+  ];
+
   return (
     <PageLayout buttons={buttons}>
-      <Table dataSource={dataSource} columns={columns} />
+      <Table dataSource={flows} columns={columns} rowKey="id" />
       <AddFlowModal
         isModalOpen={isModalOpen}
         onOk={onOkAddModal}
         onCancel={onCancelAddModal}
+        tasks={tasks}
       />
     </PageLayout>
   );
 };
 
-export default Permission;
+export default Flow;

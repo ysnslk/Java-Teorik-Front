@@ -22,16 +22,14 @@ const AddTaskModal = ({ isModalOpen, onOk, onCancel }) => {
         wrapperCol={{ span: 16 }}
         labelCol={{ span: 8 }}
       >
-        <Form.Item
-          name="name"
-          label="Role Name"
-          rules={[{ required: true }]}
-        >
+        <Form.Item name="name" label="Task Name" rules={[{ required: true }]}>
           <Input />
         </Form.Item>
 
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type="primary" htmlType="submit">Add Task</Button>
+          <Button type="primary" htmlType="submit">
+            Add Task
+          </Button>
         </Form.Item>
       </Form>
     </Modal>

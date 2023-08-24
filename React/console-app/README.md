@@ -34,6 +34,6 @@ Name
  
 Flow:
 Fields:
-name: input texttasks: select option (db task dan çekilecek) multiple
+name: input text tasks: select option (db task dan çekilecek) multiple
 Columns:
 NameTask 

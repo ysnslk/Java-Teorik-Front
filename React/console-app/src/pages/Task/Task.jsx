@@ -1,17 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PageLayout from "../../components/PageLayout";
 import { Table } from "antd";
 import AddTaskModal from "../../components/AddTaskModal";
-const dataSource = [
-  {
-    key: "1",
-    name: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, at.",
-  },
-  {
-    key: "2",
-    name: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, at.",
-  },
-];
+import axios from "axios";
 
 const columns = [
   {
@@ -20,7 +11,10 @@ const columns = [
     key: "name",
   },
 ];
-const Permission = () => {
+const Task = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [tasks, setTasks] = useState([]);
+
   const buttons = [
     {
       key: "addTask",
@@ -29,17 +23,23 @@ const Permission = () => {
       onClick: () => setIsModalOpen(true),
     },
   ];
-  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const onOkAddModal = (values) => {
     setIsModalOpen(false);
-    console.log(values);
+    axios
+      .post("http://localhost:5000/task", values)
+      .then((res) => setTasks((prevstate) => [...prevstate, res.data]));
   };
   const onCancelAddModal = () => {
     setIsModalOpen(false);
   };
+  useEffect(() => {
+    axios.get("http://localhost:5000/task").then((res) => setTasks(res.data));
+  }, []);
+
   return (
     <PageLayout buttons={buttons}>
-      <Table dataSource={dataSource} columns={columns} />
+      <Table dataSource={tasks} columns={columns} rowKey="id" />
       <AddTaskModal
         isModalOpen={isModalOpen}
         onOk={onOkAddModal}
@@ -49,4 +49,4 @@ const Permission = () => {
   );
 };
 
-export default Permission;
+export default Task;
