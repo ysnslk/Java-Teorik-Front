@@ -10,8 +10,9 @@ const User = () => {
   const [roles, setRoles] = useState([]);
   const [count, setCount] = useState(0);
   const [initialValues, setInitialValues] = useState([]);
-
+  const [search, setSearch] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const onOkAddModal = (values) => {
     setIsModalOpen(false);
 
@@ -56,6 +57,11 @@ const User = () => {
     setIsModalOpen(true);
     setInitialValues(row);
   };
+
+  const onSearch = (value) => {
+    setSearch(value);
+  };
+
   const columns = [
     {
       title: "ID",
@@ -105,8 +111,10 @@ const User = () => {
   }, [count]);
 
   return (
-    <PageLayout buttons={buttons}>
-      <Table dataSource={users} columns={columns} rowKey="id" />
+    <PageLayout buttons={buttons} onSearch={onSearch}>
+      <Table dataSource={users.filter((user) => {
+          return user.firstName.includes(search) || user.lastName.includes(search) ;
+        })} columns={columns} rowKey="id" />
       {isModalOpen && (
         <AddUserModal
           isModalOpen={isModalOpen}

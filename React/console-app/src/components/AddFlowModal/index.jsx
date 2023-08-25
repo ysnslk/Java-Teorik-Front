@@ -1,12 +1,25 @@
 import { Button, Form, Input, Modal, Select } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 
-const AddFlowModal = ({ isModalOpen, onOk, onCancel, tasks }) => {
+const AddFlowModal = ({
+  isModalOpen,
+  onOk,
+  onCancel,
+  tasks,
+  initialValues,
+}) => {
   const [form] = Form.useForm();
   const onFinish = (values) => {
     onOk(values);
     form.resetFields();
   };
+
+  useEffect(() => {
+    if (form) {
+      form.setFieldsValue(initialValues);
+    }
+  }, [form]);
+
   return (
     <Modal
       title="Add Flow"
@@ -26,10 +39,15 @@ const AddFlowModal = ({ isModalOpen, onOk, onCancel, tasks }) => {
           <Input />
         </Form.Item>
         <Form.Item name="tasks" label="Task" rules={[{ required: true }]}>
-          <Select placeholder="Select an option" mode="multiple">
+          <Select
+            placeholder="Select an option"
+            mode="multiple"
+          >
             {tasks.map((task) => {
               return (
-                <Select.Option key={task.id} value={task.id}>{task.name}</Select.Option>
+                <Select.Option key={task.id} value={task.id}>
+                  {task.name}
+                </Select.Option>
               );
             })}
           </Select>

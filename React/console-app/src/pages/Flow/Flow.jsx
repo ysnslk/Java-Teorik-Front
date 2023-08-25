@@ -1,21 +1,15 @@
 import React, { useEffect, useState } from "react";
 import PageLayout from "../../components/PageLayout";
-import { Table, Tag } from "antd";
+import { Button, Table, Tag } from "antd";
 import AddFlowModal from "../../components/AddFlowModal";
 import axios from "axios";
-
+import { EditOutlined } from "@ant-design/icons";
 const Flow = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [flows, setFlows] = useState([]);
   const [tasks, setTasks] = useState([]);
-  const buttons = [
-    {
-      key: "addflow",
-      text: "Add Flow",
-      type: "primary",
-      onClick: () => setIsModalOpen(true),
-    },
-  ];
+  const [search, setSearch] = useState("");
+  const [initialValues, setInitialValues] = useState([]);
 
   const onOkAddModal = (values) => {
     setIsModalOpen(false);
@@ -23,19 +17,58 @@ const Flow = () => {
       fName: values.fName,
       tasks: values.tasks.join(","),
     };
-    axios.post("http://localhost:5000/flow", flow).then((res) => {
-      const newFlow = {
-        ...res.data,
-        tasks: values.tasks.map((tId) =>
-          tasks.find((task) => task.id === tId)
-        ),
-      };
-      setFlows((prevFlows) => [...prevFlows, newFlow]);
-    });
+    if (initialValues) {
+      axios
+        .put(`http://localhost:5000/flow/${initialValues.id}`, flow)
+        .then((res) => {
+          const updatedFlow = {
+            ...res.data,
+            tasks: values.tasks.map((tId) =>
+              tasks.find((task) => task.id === tId)
+            ),
+          };
+          setFlows((prevFlows) =>
+            prevFlows.map((prevFlow) =>
+              prevFlow.id === updatedFlow.id ? updatedFlow : prevFlow
+            )
+          );
+        });
+    } else {
+      axios.post("http://localhost:5000/flow", flow).then((res) => {
+        const newFlow = {
+          ...res.data,
+          tasks: values.tasks.map((tId) =>
+            tasks.find((task) => task.id === tId)
+          ),
+        };
+        setFlows((prevFlows) => [...prevFlows, newFlow]);
+      });
+    }
   };
 
   const onCancelAddModal = () => {
     setIsModalOpen(false);
+  };
+  const buttons = [
+    {
+      key: "addflow",
+      text: "Add Flow",
+      type: "primary",
+      onClick: () => {
+        setIsModalOpen(true);
+        setInitialValues(null);
+      },
+    },
+  ];
+  const onClickEdit = (row) => {
+    console.log(row);
+    setIsModalOpen(true);
+    const taskIds = row.tasks.map((task) => task.id);
+    setInitialValues({ ...row, tasks: taskIds });
+  };
+
+  const onSearch = (value) => {
+    setSearch(value);
   };
 
   const columns = [
@@ -57,6 +90,21 @@ const Flow = () => {
           ))}
         </>
       ),
+    },
+    {
+      dataIndex: "id",
+      key: "id",
+      render: (cell, row) => {
+        return (
+          <Button
+            type="primary"
+            shape="circle"
+            icon={<EditOutlined />}
+            onClick={() => onClickEdit(row)}
+          />
+        );
+      },
+      width: 50,
     },
   ];
 
@@ -83,14 +131,23 @@ const Flow = () => {
   }, []);
 
   return (
-    <PageLayout buttons={buttons}>
-      <Table dataSource={flows} columns={columns} rowKey="id" />
-      <AddFlowModal
-        isModalOpen={isModalOpen}
-        onOk={onOkAddModal}
-        onCancel={onCancelAddModal}
-        tasks={tasks}
+    <PageLayout buttons={buttons} onSearch={onSearch}>
+      <Table
+        dataSource={flows.filter((flow) => {
+          return flow.fName.includes(search);
+        })}
+        columns={columns}
+        rowKey="id"
       />
+      {isModalOpen && (
+        <AddFlowModal
+          isModalOpen={isModalOpen}
+          onOk={onOkAddModal}
+          onCancel={onCancelAddModal}
+          tasks={tasks}
+          initialValues={initialValues}
+        />
+      )}
     </PageLayout>
   );
 };

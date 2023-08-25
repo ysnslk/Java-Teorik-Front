@@ -1,12 +1,24 @@
 import { Button, Form, Input, Modal, Select } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 
-const AddRoleModal = ({ isModalOpen, onOk, onCancel, permissions }) => {
+const AddRoleModal = ({
+  isModalOpen,
+  onOk,
+  onCancel,
+  permissions,
+  initialValues,
+}) => {
   const [form] = Form.useForm();
   const onFinish = (values) => {
     onOk(values);
     form.resetFields();
   };
+
+  useEffect(() => {
+    if (form) {
+      form.setFieldsValue(initialValues);
+    }
+  }, [form]);
   return (
     <Modal
       title="Add Role"

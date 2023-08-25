@@ -4,14 +4,14 @@
       "firstName": "Zeynel",
       "lastName": "Şahin",
       "gender": "male",
-      "role": "Admin",
+      "role": "SA",
       "id": 1
     },
     {
       "firstName": "Fatma",
       "lastName": "Turgut",
       "gender": "female",
-      "role": "SA",
+      "role": "Admin",
       "id": 2
     },
     {
@@ -81,7 +81,7 @@
   ],
   "task": [
     {
-      "name": "Task - 1",
+      "name": "Task - 1 test",
       "id": 1
     },
     {
@@ -104,17 +104,17 @@
   "flow": [
     {
       "fName": "Flow - 1",
-      "tasks": "1,2",
+      "tasks": "1,2,3,4,5",
       "id": 1
     },
     {
-      "fName": "Flow - 2",
-      "tasks": "3,2,1",
+      "fName": "Flow - 3",
+      "tasks": "1,2,3,5,4",
       "id": 2
     },
     {
       "fName": "Flow - 3",
-      "tasks": "2,3",
+      "tasks": "1,2,5,4,3",
       "id": 3
     },
     {
@@ -151,7 +151,7 @@
   "role": [
     {
       "name": "SA",
-      "permissions": "1,2",
+      "permissions": "1,2,4,7,5",
       "id": 1
     },
     {
