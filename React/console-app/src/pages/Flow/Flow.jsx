@@ -26,8 +26,8 @@ const Flow = () => {
     axios.post("http://localhost:5000/flow", flow).then((res) => {
       const newFlow = {
         ...res.data,
-        tasks: values.tasks.map(
-          (tId) => tasks.find((task) => task.id === parseInt(tId))
+        tasks: values.tasks.map((tId) =>
+          tasks.find((task) => task.id === tId)
         ),
       };
       setFlows((prevFlows) => [...prevFlows, newFlow]);
@@ -37,28 +37,6 @@ const Flow = () => {
   const onCancelAddModal = () => {
     setIsModalOpen(false);
   };
-
-  useEffect(() => {
-    axios.get("http://localhost:5000/task").then((res) => {
-      const fetchedTasks = res.data;
-      setTasks(fetchedTasks);
-      axios.get("http://localhost:5000/flow").then((resFlow) => {
-        const flowsData = resFlow.data.map((flow) => {
-          const taskIds = flow.tasks.split(",");
-          const flowTasks = taskIds.map((id) =>
-            fetchedTasks.find((task) => task.id === parseInt(id))
-          );
-          return {
-            ...flow,
-            tasks: flowTasks,
-          };
-        });
-
-        
-        setFlows(flowsData);
-      });
-    });
-  }, []);
 
   const columns = [
     {
@@ -70,17 +48,39 @@ const Flow = () => {
       title: "Tasks",
       dataIndex: "tasks",
       key: "tasks",
-      // render: (taskList) => (
-      //   <>
-      //     {taskList.map((task) => (
-      //       <Tag color="blue" key={task.id}>
-      //         {task.fName}
-      //       </Tag>
-      //     ))}
-      //   </>
-      // ),
+      render: (taskList) => (
+        <>
+          {taskList.map((task) => (
+            <Tag color="blue" key={task.id}>
+              {task.name}
+            </Tag>
+          ))}
+        </>
+      ),
     },
   ];
+
+  useEffect(() => {
+    axios.get("http://localhost:5000/task").then((res) => {
+      const fetchedTasks = res.data;
+      setTasks(fetchedTasks);
+      axios.get("http://localhost:5000/flow").then((resFlow) => {
+        const flowsData = resFlow.data.map((flow) => {
+          const taskIds = flow.tasks.split(",").map((id) => parseInt(id));
+
+          const flowTasks = taskIds.map((id) => {
+            return fetchedTasks.find((task) => task.id === id);
+          });
+
+          return {
+            ...flow,
+            tasks: flowTasks,
+          };
+        });
+        setFlows(flowsData);
+      });
+    });
+  }, []);
 
   return (
     <PageLayout buttons={buttons}>

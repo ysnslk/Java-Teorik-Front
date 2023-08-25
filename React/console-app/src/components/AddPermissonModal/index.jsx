@@ -1,12 +1,19 @@
 import { Button, Form, Input, Modal, Select } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 
-const AddPermissionModal = ({ isModalOpen, onOk, onCancel }) => {
+const AddPermissionModal = ({ isModalOpen, onOk, onCancel, initialValues }) => {
   const [form] = Form.useForm();
   const onFinish = (values) => {
     onOk(values);
     form.resetFields();
   };
+
+  useEffect(() => {
+    if (form) {
+      form.setFieldsValue(initialValues);
+    }
+  }, [form]);
+
   return (
     <Modal
       title="Add Permission"
@@ -31,7 +38,9 @@ const AddPermissionModal = ({ isModalOpen, onOk, onCancel }) => {
         </Form.Item>
 
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type="primary" htmlType="submit">Add Permission</Button>
+          <Button type="primary" htmlType="submit">
+            Add Permission
+          </Button>
         </Form.Item>
       </Form>
     </Modal>

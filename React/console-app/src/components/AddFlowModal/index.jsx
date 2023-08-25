@@ -29,7 +29,7 @@ const AddFlowModal = ({ isModalOpen, onOk, onCancel, tasks }) => {
           <Select placeholder="Select an option" mode="multiple">
             {tasks.map((task) => {
               return (
-                <Select.Option key={task.id} value={task.name}>{task.name}</Select.Option>
+                <Select.Option key={task.id} value={task.id}>{task.name}</Select.Option>
               );
             })}
           </Select>

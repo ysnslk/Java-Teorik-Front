@@ -30,9 +30,19 @@ const items = [
 ];
 const MainLayout = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
+  const [breadCrumb, setBreadCrumb] = useState(<Link to="/user">User</Link>);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
+  const onSelect = ({ key }) => {
+    items.forEach((item) => {
+      if (item.key === key) {
+        setBreadCrumb(item.label);
+      }
+    });
+  };
+
   return (
     <Layout
       style={{
@@ -50,6 +60,7 @@ const MainLayout = ({ children }) => {
           defaultSelectedKeys={["1"]}
           mode="inline"
           items={items}
+          onSelect={onSelect}
         />
       </Sider>
       <Layout>
@@ -65,7 +76,7 @@ const MainLayout = ({ children }) => {
           }}
         >
           <Breadcrumb
-            items={[{ title: "User" }]}
+            items={[{ title: breadCrumb }]}
             style={{
               margin: "16px 0",
             }}
